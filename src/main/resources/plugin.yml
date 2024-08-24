@@ -1,0 +1,6 @@
+name: Battleground
+version: '${project.version}'
+author: MrScopes
+main: me.mrscopes.battleground.Battleground
+api-version: 1.21
+depend: [LuckPerms]
