@@ -15,7 +15,7 @@ class AbilityRightClickListener : Listener {
         if (event.item == null || event.item?.type == Material.AIR) return
 
         Abilities.getAbility(event.item!!) ?: return
-
+        event.isCancelled = true
         val result = Abilities.attempt(event.item!!, event)
 
         if (result != null) {
