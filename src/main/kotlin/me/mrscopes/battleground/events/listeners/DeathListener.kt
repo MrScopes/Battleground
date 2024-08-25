@@ -5,6 +5,7 @@ import me.mrscopes.battleground.utilities.Utilities
 import me.mrscopes.battleground.utilities.miniMessage
 import me.mrscopes.battleground.utilities.mongoPlayer
 import net.kyori.adventure.text.format.NamedTextColor
+import org.bukkit.Bukkit
 import org.bukkit.OfflinePlayer
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -21,25 +22,8 @@ class DeathListener : Listener {
         val player = event.player
         val mongoPlayer = player.mongoPlayer()
 
-        val b64 = fun(item: ItemStack): String {
-            val bytes = item.serializeAsBytes()
-            return Base64.getEncoder().encodeToString(bytes)
-        }
-
-        /*
-        val playerLoot = Loot(
-            owner = player.uniqueId.toString(),
-            helmet = player.inventory.helmet?.let { b64(it) },
-            chestplate = player.inventory.chestplate?.let { b64(it) },
-            leggings = player.inventory.leggings?.let { b64(it) },
-            boots = player.inventory.boots?.let { b64(it) },
-            weapon = player.inventory.find { KitsObject.swords.contains(it.type) }?.let { b64(it) }
-        )
-        */
-
-
         val killer: OfflinePlayer? = when {
-            mongoPlayer.lastAttacker != null -> mongoPlayer.lastAttacker
+            mongoPlayer.lastAttacker != null -> Bukkit.getPlayer(UUID.fromString(mongoPlayer.lastAttacker))
             player.killer != null -> player.killer
             player.lastDamageCause?.entity is Player -> player.lastDamageCause?.entity as Player
             player.lastDamageCause?.entity is OfflinePlayer -> player.lastDamageCause?.entity as OfflinePlayer

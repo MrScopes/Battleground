@@ -6,6 +6,7 @@ import me.mrscopes.battleground.combatlog.CombatLogListeners
 import me.mrscopes.battleground.enchantments.listeners.EnchPlayerDamageListener
 import me.mrscopes.battleground.events.listeners.*
 import me.mrscopes.battleground.healthbars.HealthBarListeners
+import me.mrscopes.battleground.level.LevelListeners
 import me.mrscopes.battleground.mongo.MongoListeners
 import me.mrscopes.battleground.scoreboard.ScoreboardListeners
 import org.bukkit.Bukkit
@@ -28,7 +29,8 @@ object Events {
                 HealthBarListeners(),
                 CombatLogListeners(),
                 ScoreboardListeners(),
-                AbilityRightClickListener()
+                AbilityRightClickListener(),
+                LevelListeners()
             )
         )
     }

@@ -1,6 +1,7 @@
 package me.mrscopes.battleground.utilities
 
 import me.mrscopes.battleground.Battleground
+import me.mrscopes.battleground.level.Level
 import net.kyori.adventure.audience.Audience
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.minimessage.MiniMessage
@@ -40,11 +41,13 @@ fun Player.suffix(suffix: String) = run {
 }
 
 fun Player.display(): Component {
-    val prefix = this.prefix().let { Utilities.translateChatColors(it) }
-    val name = this.mongoPlayer().nameColor?.let { it + this.name } ?: this.name
-    val suffix = this.suffix().let { Utilities.translateChatColors(it) }
+    val player = this
+    val prefix = player.prefix().let { Utilities.translateChatColors(it) }
+    val name = player.mongoPlayer().nameColor?.let { it + player.name } ?: player.name
+    val suffix = player.suffix().let { Utilities.translateChatColors(it) }
 
     val format = buildString {
+        append(Level.levelDisplay(player))
         append(prefix)
         append(name)
         append(suffix)

@@ -13,6 +13,6 @@ class DamageListener : Listener {
     @EventHandler(priority = EventPriority.LOW)
     fun onDamage(event: EntityDamageByEntityEvent) {
         if (event.damager !is Player || event.entity !is LivingEntity || event.cause != EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.cause != EntityDamageEvent.DamageCause.PROJECTILE || event.isCancelled) return
-        (event.entity as Player).mongoPlayer().lastAttacker = event.entity as Player
+        (event.entity as Player).mongoPlayer().lastAttacker = (event.entity as Player).uniqueId.toString()
     }
 }

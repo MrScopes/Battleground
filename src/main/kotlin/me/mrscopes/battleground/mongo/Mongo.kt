@@ -68,8 +68,9 @@ data class MongoPlayer(
     var deaths: Int = 0,
     var rerolls: Int = 3,
     var maxRerolls: Int = 3,
-    var lastAttacker: Player? = null,
+    var lastAttacker: String? = null,
     var nameColor: String? = null,
+    var xp: Double = 0.0,
     // var loot: MutableList<Loot> = mutableListOf()
 )
 
