@@ -47,7 +47,7 @@ fun Player.display(): Component {
     val suffix = player.suffix().let { Utilities.translateChatColors(it) }
 
     val format = buildString {
-        append(Level.levelDisplay(player))
+        append(Level.levelDisplay(player) + " ")
         append(prefix)
         append(name)
         append(suffix)

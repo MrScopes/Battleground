@@ -9,7 +9,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
-import java.util.*
 
 class LevelListeners : Listener {
     @EventHandler(priority = EventPriority.LOWEST)
@@ -18,7 +17,6 @@ class LevelListeners : Listener {
         val mongoPlayer = player.mongoPlayer()
 
         var killer: OfflinePlayer? = when {
-            mongoPlayer.lastAttacker != null -> Bukkit.getPlayer(UUID.fromString(mongoPlayer.lastAttacker))
             player.killer != null -> player.killer
             player.lastDamageCause?.entity is Player -> player.lastDamageCause?.entity as Player
             player.lastDamageCause?.entity is OfflinePlayer -> player.lastDamageCause?.entity as OfflinePlayer
@@ -34,7 +32,7 @@ class LevelListeners : Listener {
                 val xp = xp(killer, player)
                 mongoKiller.xp += xp.first
 
-                killer.miniMessage("<white>You received $xp for killing ${player.name}.<br>${xp.second}")
+                killer.miniMessage("<white>You received ${xp.first} xp for killing ${player.name}.<br>${xp.second}")
             }
         }
 
@@ -49,15 +47,15 @@ class LevelListeners : Listener {
         val mongoAttacker = attacker.mongoPlayer()
         val mongoVictim = victim.mongoPlayer()
 
-        var adjustments = " <dark_gray> - <gray>Base: <white>10"
+        var adjustments = " <dark_gray> - <gray>Base: <white>10<br>"
 
         val healthAdjustment = healthAdjustment(attacker.health)
-        adjustments += " <dark_gray> - <gray>Your Health (${attacker.health}: <green>+$healthAdjustment\n"
+        adjustments += " <dark_gray> - <gray>Your Health (${attacker.health}: <green>+$healthAdjustment<br>"
         xp += healthAdjustment
 
         val levelAdjustment = levelAdjustment(mongoAttacker.xp, mongoVictim.xp)
-        val levelAdjustmentDisplay = if (levelAdjustment > 0) "<green>+${levelAdjustment}" else "<red>- $levelAdjustment"
-        adjustments += " <dark_gray> - <gray>XP (You ${mongoAttacker.xp} vs Them ${mongoVictim.xp}): $levelAdjustmentDisplay\n"
+        val levelAdjustmentDisplay = if (levelAdjustment > 0) "<green>+${levelAdjustment}" else "<red>$levelAdjustment"
+        adjustments += " <dark_gray> - <gray>XP (You ${mongoAttacker.xp} vs Them ${mongoVictim.xp}): $levelAdjustmentDisplay<br>"
         xp += healthAdjustment
 
         return Pair(xp, adjustments)

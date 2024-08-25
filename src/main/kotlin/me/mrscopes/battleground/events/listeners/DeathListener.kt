@@ -23,7 +23,6 @@ class DeathListener : Listener {
         val mongoPlayer = player.mongoPlayer()
 
         val killer: OfflinePlayer? = when {
-            mongoPlayer.lastAttacker != null -> Bukkit.getPlayer(UUID.fromString(mongoPlayer.lastAttacker))
             player.killer != null -> player.killer
             player.lastDamageCause?.entity is Player -> player.lastDamageCause?.entity as Player
             player.lastDamageCause?.entity is OfflinePlayer -> player.lastDamageCause?.entity as OfflinePlayer
@@ -51,6 +50,5 @@ class DeathListener : Listener {
 
         mongoPlayer.deaths += 1
         mongoPlayer.killStreak = 0
-        mongoPlayer.lastAttacker = null
     }
 }

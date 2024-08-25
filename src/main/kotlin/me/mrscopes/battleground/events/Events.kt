@@ -24,7 +24,6 @@ object Events {
                 LaunchListener(),
                 EnchPlayerDamageListener(),
                 DeathListener(),
-                DamageListener(),
                 MongoListeners(),
                 HealthBarListeners(),
                 CombatLogListeners(),

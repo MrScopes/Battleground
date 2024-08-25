@@ -26,7 +26,6 @@ class MongoListeners : Listener {
         val mongo = Battleground.mongo
 
         val mongoPlayer = player.mongoPlayer()
-        mongoPlayer.lastAttacker = null
 
         Utilities.async { mongo.putPlayerInDatabase(mongoPlayer) }
 

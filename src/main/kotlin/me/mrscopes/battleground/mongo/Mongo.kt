@@ -68,19 +68,6 @@ data class MongoPlayer(
     var deaths: Int = 0,
     var rerolls: Int = 3,
     var maxRerolls: Int = 3,
-    var lastAttacker: String? = null,
     var nameColor: String? = null,
     var xp: Double = 0.0,
-    // var loot: MutableList<Loot> = mutableListOf()
-)
-
-data class Loot(
-    var owner: String? = null,
-    var helmet: String? = null,
-    var chestplate: String? = null,
-    var leggings: String? = null,
-    var boots: String? = null,
-    var weapon: String? = null,
-    var ability1: String? = null,
-    var ability2: String? = null
 )

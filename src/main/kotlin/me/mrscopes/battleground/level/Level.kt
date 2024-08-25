@@ -13,7 +13,7 @@ object Level {
         return level.coerceAtMost(100)
     }
 
-    fun levelDisplay(level: Int): Component {
+    fun levelDisplay(level: Int): String {
         val color: String = if (level < 10) "<gray>"
         else if (level < 20) "<light_blue>"
         else if (level < 30) "<yellow>"
@@ -26,10 +26,10 @@ object Level {
         else if (level < 100) "<dark_red>"
         else "<dark_red><bold>"
 
-        return "<dark_gray>[&$color$level<reset><dark_gray>]".miniMessage()
+        return "<dark_gray>[$color$level<reset><dark_gray>]"
     }
 
-    fun levelDisplay(player: Player): Component {
+    fun levelDisplay(player: Player): String {
         return levelDisplay(level(player.mongoPlayer().xp))
     }
 }
