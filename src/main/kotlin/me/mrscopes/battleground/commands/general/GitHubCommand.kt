@@ -1,19 +1,17 @@
 package me.mrscopes.battleground.commands.general
 
-import co.aikar.commands.BaseCommand
-import co.aikar.commands.annotation.CommandAlias
-import co.aikar.commands.annotation.Default
-import co.aikar.commands.annotation.Description
-import net.kyori.adventure.text.minimessage.MiniMessage
-import org.bukkit.command.CommandSender
+import com.mojang.brigadier.context.CommandContext
+import io.papermc.paper.command.brigadier.CommandSourceStack
+import me.mrscopes.battleground.commands.CommandDescription
+import me.mrscopes.battleground.commands.CommandName
+import me.mrscopes.battleground.commands.CustomCommand
+import me.mrscopes.battleground.utilities.miniMessage
 
-@CommandAlias("github")
-@Description("View the github repository.")
-class GitHubCommand : BaseCommand() {
-    @Default
-    fun run(sender: CommandSender) {
-        val message = MiniMessage.miniMessage()
-            .deserialize("<click:open_url:'https://github.com/MrScopes/Battleground'>Click here to view the GitHub repository.")
-        sender.sendMessage(message)
+@CommandName("github")
+@CommandDescription("View the GitHub repository.")
+class GitHubCommand : CustomCommand() {
+    override fun execute(ctx: CommandContext<CommandSourceStack>): Int {
+        ctx.source.sender.miniMessage("<click:open_url:'https://github.com/MrScopes/Battleground'>Click here to view the GitHub repository.")
+        return 1
     }
 }

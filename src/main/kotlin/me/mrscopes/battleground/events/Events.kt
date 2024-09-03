@@ -3,7 +3,6 @@ package me.mrscopes.battleground.events
 import me.mrscopes.battleground.Battleground
 import me.mrscopes.battleground.abilities.listeners.AbilityRightClickListener
 import me.mrscopes.battleground.combatlog.CombatLogListeners
-import me.mrscopes.battleground.enchantments.listeners.EnchPlayerDamageListener
 import me.mrscopes.battleground.events.listeners.*
 import me.mrscopes.battleground.healthbars.HealthBarListeners
 import me.mrscopes.battleground.level.LevelListeners
@@ -22,14 +21,13 @@ object Events {
                 RespawnListener(),
                 CancelListeners(),
                 LaunchListener(),
-                EnchPlayerDamageListener(),
                 DeathListener(),
                 MongoListeners(),
                 HealthBarListeners(),
                 CombatLogListeners(),
                 ScoreboardListeners(),
                 AbilityRightClickListener(),
-                LevelListeners()
+                LevelListeners(),
             )
         )
     }

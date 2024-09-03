@@ -11,7 +11,7 @@ Battleground.minehut.gg
 - Clone the repo
 - Install LuckPerms in server/plugins
 - build with `mvn clean install`
-- I use `mvn clean install; cd server; ./start.bat; cd .. ` in Intellij on Windows
+- I use `mvn clean install; cd server; ./start.bat; cd ..` in Intellij on Windows
 - plugin is automatically built to server/plugins folder
 - MongoDB required, put connection string in server/plugins/Battleground/config.yml
 - Database name is "kits" with a "player" collection

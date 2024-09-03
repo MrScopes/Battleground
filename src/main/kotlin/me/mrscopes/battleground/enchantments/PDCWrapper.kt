@@ -18,6 +18,11 @@ class PDCWrapper(val item: ItemStack, val namespace: String) {
         update()
     }
 
+    fun set(key: String, value: Double) {
+        pdc[NamespacedKey(namespace, key), PersistentDataType.DOUBLE] = value
+        update()
+    }
+
     fun set(key: String, value: Long) {
         pdc[NamespacedKey(namespace, key), PersistentDataType.LONG] = value
         update()
@@ -29,6 +34,10 @@ class PDCWrapper(val item: ItemStack, val namespace: String) {
 
     fun set(parent: String, key: String, value: Int) {
         set(parent, key, value, PersistentDataType.INTEGER)
+    }
+
+    fun set(parent: String, key: String, value: Double) {
+        set(parent, key, value, PersistentDataType.DOUBLE)
     }
 
     fun set(parent: String, key: String, value: Long) {
@@ -59,8 +68,26 @@ class PDCWrapper(val item: ItemStack, val namespace: String) {
         return pdc[NamespacedKey(namespace, key), type]
     }
 
+    fun unset(key: String) {
+        pdc.remove(NamespacedKey(namespace, key))
+        update()
+    }
+
+    fun unset(parent: String, key: String) {
+        val container = pdc.get(NamespacedKey(namespace, parent), PersistentDataType.TAG_CONTAINER) ?: return
+        container.remove(NamespacedKey(namespace, key))
+        pdc[NamespacedKey(namespace, parent), PersistentDataType.TAG_CONTAINER] = container
+        update()
+    }
+
     fun update() {
         item.itemMeta = meta
+    }
+
+    override fun toString(): String {
+        return pdc.keys.map {
+            "${it.namespace}:${it.key}"
+        }.joinToString()
     }
 }
 

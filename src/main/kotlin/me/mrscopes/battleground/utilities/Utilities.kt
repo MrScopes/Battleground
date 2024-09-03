@@ -3,18 +3,21 @@ package me.mrscopes.battleground.utilities
 import me.mrscopes.battleground.Battleground
 import org.bukkit.Bukkit
 import org.bukkit.Location
+import org.bukkit.command.ConsoleCommandSender
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.scheduler.BukkitTask
 import java.security.SecureRandom
 
 object Utilities {
     fun broadcastToStaff(message: String) {
+        Bukkit.getConsoleSender().miniMessage(message)
         Bukkit.getOnlinePlayers().forEach {
             if (it.hasPermission("battleground.mod") || it.isOp) it.miniMessage(message)
         }
     }
 
     fun broadcastToAdmins(message: String) {
+        Bukkit.getConsoleSender().miniMessage(message)
         Bukkit.getOnlinePlayers().forEach {
             if (it.hasPermission("battleground.admin") || it.isOp) it.miniMessage(message)
         }

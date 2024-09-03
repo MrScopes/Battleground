@@ -30,10 +30,6 @@ class JoinListener : Listener {
         val scoreboard = Bukkit.getScoreboardManager().mainScoreboard
         var team = scoreboard.getTeam("d-default")
 
-        if (scoreboard.teams.isEmpty()) {
-            scoreboard.getTeam("a-admin")
-        }
-
         if (player.hasPermission("battleground.admin")) {
             team = scoreboard.getTeam("a-admin")
         } else if (player.hasPermission("battleground.mod")) {
@@ -44,7 +40,7 @@ class JoinListener : Listener {
 
         team?.addPlayer(player)
 
-        player.sendPlayerListHeader("<br>     [<yellow>Battleground <reset>]     <br>".miniMessage())
+        player.sendPlayerListHeader("<br>     [<yellow>Battleground<reset>]     <br>".miniMessage())
         player.sendPlayerListFooter("<br>     Hello, ${event.player.name}!     <br>     <gray><italic>battleground.minehut.gg     <br>".miniMessage())
 
         player.playerListName(" <player> ".miniMessage(Placeholder.component("player", player.display())))

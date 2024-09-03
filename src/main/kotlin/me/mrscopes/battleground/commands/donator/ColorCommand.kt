@@ -1,26 +1,36 @@
 package me.mrscopes.battleground.commands.donator
 
-import co.aikar.commands.BaseCommand
-import co.aikar.commands.annotation.CommandAlias
-import co.aikar.commands.annotation.CommandPermission
-import co.aikar.commands.annotation.Default
-import co.aikar.commands.annotation.Description
+import me.mrscopes.battleground.utilities.miniMessage
 import me.mrscopes.battleground.utilities.mongoPlayer
+import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-@CommandAlias("color")
-@CommandPermission("battleground.color")
-@Description("Change your name color")
-class ColorCommand : BaseCommand() {
-    @Default
-    fun run(sender: CommandSender, args: Array<String>) {
+class ColorCommand : Command("color") {
+    init {
+        description = "Change your name color."
+        permission = "battleground.color"
+    }
+
+    override fun execute(sender: CommandSender, command: String, args: Array<String>): Boolean {
+        val player = sender as Player
+
         if (args.isEmpty()) {
-            (sender as Player).mongoPlayer().nameColor = null
-            return
+            player.miniMessage("Reset your name color.")
+            player.mongoPlayer().nameColor = null
+            return true
         }
 
         val color = args.joinToString()
-        (sender as Player).mongoPlayer().nameColor = color.replace("\"", "")
+        val regex = Regex("""<#?[a-zA-Z0-9]+>""")
+        val match = regex.find(color)
+
+        if (match == null) {
+            player.miniMessage("<red>Invalid color. Try \\<blue> \\<green> or \\<#12345>.")
+            return true
+        }
+
+        player.mongoPlayer().nameColor = match.value
+        return true
     }
 }
