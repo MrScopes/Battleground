@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.kits.commands
+package me.mrscopes.battleground.commands.kits
 
 import me.mrscopes.battleground.kits.Kits
 import me.mrscopes.battleground.utilities.Utilities
@@ -9,7 +9,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class RerollCommand : Command("reroll") {
+class `!RerollCommand` : Command("reroll") {
     init {
         description = "Reroll an item or ability."
     }

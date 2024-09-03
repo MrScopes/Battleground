@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.enchantments.commands
+package me.mrscopes.battleground.commands.enchantments
 
 import me.mrscopes.battleground.enchantments.Enchantment
 import me.mrscopes.battleground.enchantments.Enchantments
@@ -10,7 +10,7 @@ import org.bukkit.command.TabCompleter
 import org.bukkit.enchantments.Enchantment as BukkitEnchantment
 import org.bukkit.entity.Player
 
-class EnchantCommand : Command("enchant"), TabCompleter {
+class `!EnchantCommand` : Command("enchant"), TabCompleter {
     val allEnchantments = mutableListOf(
         *BukkitEnchantment.values().map { it.key.toString() }.toTypedArray(),
         *Enchantments.enchantments.map { NamespacedKey("battleground", it.name.replace(" ", "_").lowercase()).toString() }
@@ -115,3 +115,55 @@ class EnchantCommand : Command("enchant"), TabCompleter {
 
 }
 
+/*
+ val manager: LifecycleEventManager<Plugin> = this.lifecycleManager
+        manager.registerEventHandler(LifecycleEvents.COMMANDS) { event ->
+            val cmds: io.papermc.paper.command.brigadier.Commands = event.registrar()
+
+            cmds.register(
+                literal("new-command")
+                    .then(
+                        argument("enchantment", StringArgumentType.word())
+                        .suggests { context, builder ->
+                            val input = builder.remaining.lowercase()
+
+                            Enchantment.values()
+                                .filter { it.key.key.startsWith(input) }
+                                .forEach { enchantment -> builder.suggest(enchantment.key.key) }
+
+                            builder.buildFuture()
+                        }
+                        .then(argument("level", IntegerArgumentType.integer(1, 5))
+                            .suggests { ctx, builder ->
+                                val input = builder.remaining
+                                (1..5)
+                                    .filter { it.toString().startsWith(input) }
+                                    .forEach { builder.suggest(it) }
+                                builder.buildFuture()
+                            }
+                            .executes { ctx ->
+                                val enchantmentName = StringArgumentType.getString(ctx, "enchantment")
+                                val level = IntegerArgumentType.getInteger(ctx, "level")
+
+                                val enchantment = Enchantment.getByKey(NamespacedKey("minecraft", enchantmentName))
+                                    ?: throw SimpleCommandExceptionType(LiteralMessage("Invalid enchantment: $enchantmentName")).create()
+
+                                val player = ctx.source.sender as Player
+                                val itemInHand = player.inventory.itemInMainHand
+                                if (itemInHand.type.isAir) {
+                                    player.sendMessage("You must hold an item to enchant it.")
+                                    return@executes 0
+                                }
+
+                                itemInHand.addUnsafeEnchantment(enchantment, level)
+                                player.sendMessage("Enchanted your item with ${enchantment.key.key} at level $level.")
+                                return@executes 1
+                            }
+                        )
+                    )
+                    .build(),
+                "some bukkit help description string",
+                listOf("an-alias"),
+            )
+        }
+ */

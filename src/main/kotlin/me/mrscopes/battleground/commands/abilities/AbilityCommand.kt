@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.abilities.commands
+package me.mrscopes.battleground.commands.abilities
 
 import me.mrscopes.battleground.abilities.Abilities
 import me.mrscopes.battleground.utilities.miniMessage

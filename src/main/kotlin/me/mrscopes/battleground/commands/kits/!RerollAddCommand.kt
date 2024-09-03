@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.kits.commands
+package me.mrscopes.battleground.commands.kits
 
 import me.mrscopes.battleground.utilities.miniMessage
 import me.mrscopes.battleground.utilities.mongoPlayer
@@ -6,7 +6,7 @@ import org.bukkit.Bukkit
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 
-class RerollAddCommand : Command("rerolladd") {
+class `!RerollAddCommand` : Command("rerolladd") {
     init {
         description = "Add rerolls to a user."
         permission = "battleground.admin"

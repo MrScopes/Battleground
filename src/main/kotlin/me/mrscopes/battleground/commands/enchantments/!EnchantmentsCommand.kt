@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.enchantments.commands
+package me.mrscopes.battleground.commands.enchantments
 
 import com.github.stefvanschie.inventoryframework.gui.GuiItem
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui
@@ -17,7 +17,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-class EnchantmentsCommand : Command("enchantments") {
+class `!EnchantmentsCommand` : Command("enchantments") {
     var mainMenu = ChestGui(3, "Enchantments")
     val armorMenu = ChestGui(3, "Armor Enchantments")
     val meleeMenu = ChestGui(3, "Melee Enchantments")

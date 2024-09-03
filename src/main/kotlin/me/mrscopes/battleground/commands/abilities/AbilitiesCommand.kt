@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.abilities.commands
+package me.mrscopes.battleground.commands.abilities
 
 import com.github.stefvanschie.inventoryframework.gui.type.ChestGui
 import me.mrscopes.battleground.abilities.Abilities

@@ -1,4 +1,4 @@
-package me.mrscopes.battleground.kits.commands
+package me.mrscopes.battleground.commands.kits
 
 import me.mrscopes.battleground.kits.Kits
 import me.mrscopes.battleground.utilities.Utilities
@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
-class KitCommand : Command("kit") {
+class `!KitCommand` : Command("kit") {
     init {
         description = "Get a random kit."
     }
