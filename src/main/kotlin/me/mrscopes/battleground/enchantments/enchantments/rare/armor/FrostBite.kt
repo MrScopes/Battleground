@@ -9,8 +9,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class FrostBite :
-    Enchantment("Frostbite", doubleArrayOf(2.0, 4.0, 8.0, 10.0, 15.0), EnchantmentRarity.RARE, EnchantmentType.ARMOR) {
+class FrostBite : Enchantment("Frostbite", doubleArrayOf(2.0, 4.0, 8.0, 10.0, 15.0), EnchantmentRarity.RARE, EnchantmentType.ARMOR) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as CustomEntityDamageByEntityEvent
 

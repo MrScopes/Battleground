@@ -8,12 +8,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 
-class Judgement : Enchantment(
-    "Judgement",
-    doubleArrayOf(0.01, 0.02, 0.03, 0.04, 0.05),
-    EnchantmentRarity.LEGENDARY,
-    EnchantmentType.MELEE
-) {
+class Judgement : Enchantment("Judgement", doubleArrayOf(0.01, 0.02, 0.03, 0.04, 0.05), EnchantmentRarity.LEGENDARY, EnchantmentType.MELEE) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as CustomEntityDamageByEntityEvent
 

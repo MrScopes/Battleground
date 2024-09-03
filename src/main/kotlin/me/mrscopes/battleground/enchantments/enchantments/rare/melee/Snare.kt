@@ -9,8 +9,7 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class Snare :
-    Enchantment("Snare", doubleArrayOf(7.0, 9.0, 11.0, 13.0, 15.0), EnchantmentRarity.RARE, EnchantmentType.MELEE) {
+class Snare : Enchantment("Snare", doubleArrayOf(7.0, 9.0, 11.0, 13.0, 15.0), EnchantmentRarity.RARE, EnchantmentType.MELEE) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as CustomEntityDamageByEntityEvent
 

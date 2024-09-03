@@ -8,8 +8,7 @@ import org.bukkit.event.Event
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.inventory.ItemStack
 
-class Dash :
-    Ability("Dash", doubleArrayOf(20.0, 19.0, 17.0, 16.0, 15.0), AbilityRarity.RARE, Material.FIREWORK_ROCKET) {
+class Dash : Ability("Dash", doubleArrayOf(20.0, 19.0, 17.0, 16.0, 15.0), AbilityRarity.RARE, Material.FIREWORK_ROCKET) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as PlayerInteractEvent
         evt.player.velocity = evt.player.location.direction.multiply(2.0)

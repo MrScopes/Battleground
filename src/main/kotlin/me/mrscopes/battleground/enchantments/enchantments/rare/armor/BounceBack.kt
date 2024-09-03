@@ -7,12 +7,7 @@ import me.mrscopes.battleground.enchantments.listeners.CustomEntityDamageByEntit
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 
-class BounceBack : Enchantment(
-    "Bounce Back",
-    doubleArrayOf(5.0, 7.5, 10.0, 12.5, 15.0),
-    EnchantmentRarity.RARE,
-    EnchantmentType.ARMOR
-) {
+class BounceBack : Enchantment("Bounce Back", doubleArrayOf(5.0, 7.5, 10.0, 12.5, 15.0), EnchantmentRarity.RARE, EnchantmentType.ARMOR) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String? {
         val evt = event as CustomEntityDamageByEntityEvent
 

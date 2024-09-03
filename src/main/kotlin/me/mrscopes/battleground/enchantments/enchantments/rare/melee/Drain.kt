@@ -7,8 +7,7 @@ import me.mrscopes.battleground.enchantments.listeners.CustomEntityDamageByEntit
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 
-class Drain :
-    Enchantment("Drain", doubleArrayOf(3.0, 6.0, 8.0, 9.0, 10.0), EnchantmentRarity.RARE, EnchantmentType.MELEE) {
+class Drain : Enchantment("Drain", doubleArrayOf(3.0, 6.0, 8.0, 9.0, 10.0), EnchantmentRarity.RARE, EnchantmentType.MELEE) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as CustomEntityDamageByEntityEvent
 

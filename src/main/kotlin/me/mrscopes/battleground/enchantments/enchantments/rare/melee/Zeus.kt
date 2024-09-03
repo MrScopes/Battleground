@@ -8,8 +8,7 @@ import org.bukkit.event.Event
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.inventory.ItemStack
 
-class Zeus :
-    Enchantment("Zeus", doubleArrayOf(5.0, 7.0, 9.0, 12.0, 15.0), EnchantmentRarity.RARE, EnchantmentType.MELEE) {
+class Zeus : Enchantment("Zeus", doubleArrayOf(5.0, 7.0, 9.0, 12.0, 15.0), EnchantmentRarity.RARE, EnchantmentType.MELEE) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as EntityDamageByEntityEvent
 

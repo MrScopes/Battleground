@@ -3,11 +3,8 @@ package me.mrscopes.battleground.commands
 import com.mojang.brigadier.builder.LiteralArgumentBuilder
 import com.mojang.brigadier.context.CommandContext
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
-import com.mojang.brigadier.tree.LiteralCommandNode
 import io.papermc.paper.command.brigadier.CommandSourceStack
-import io.papermc.paper.command.brigadier.Commands
 import io.papermc.paper.command.brigadier.Commands.literal
-import me.mrscopes.battleground.utilities.miniMessage
 import io.papermc.paper.command.brigadier.Commands as PaperCommands
 
 open class CustomCommand {

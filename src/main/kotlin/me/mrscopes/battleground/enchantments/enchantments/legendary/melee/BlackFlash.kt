@@ -9,12 +9,7 @@ import org.bukkit.Sound
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 
-class BlackFlash : Enchantment(
-    "Black Flash",
-    doubleArrayOf(2.0, 4.0, 6.0, 8.0, 10.0),
-    EnchantmentRarity.LEGENDARY,
-    EnchantmentType.MELEE
-) {
+class BlackFlash : Enchantment("Black Flash", doubleArrayOf(2.0, 4.0, 6.0, 8.0, 10.0), EnchantmentRarity.LEGENDARY, EnchantmentType.MELEE) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as CustomEntityDamageByEntityEvent
 

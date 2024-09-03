@@ -7,8 +7,7 @@ import me.mrscopes.battleground.enchantments.listeners.CustomEntityDamageByEntit
 import org.bukkit.event.Event
 import org.bukkit.inventory.ItemStack
 
-class Reflection :
-    Enchantment("Reflection", doubleArrayOf(2.0, 3.0, 4.0, 6.0, 8.0), EnchantmentRarity.RARE, EnchantmentType.ARMOR) {
+class Reflection : Enchantment("Reflection", doubleArrayOf(2.0, 3.0, 4.0, 6.0, 8.0), EnchantmentRarity.RARE, EnchantmentType.ARMOR) {
     override fun activate(item: ItemStack, level: Int, event: Event?): String {
         val evt = event as CustomEntityDamageByEntityEvent
 
