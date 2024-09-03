@@ -6,7 +6,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
-class ColorCommand : Command("color") {
+class `!ColorCommand` : Command("color") {
     init {
         description = "Change your name color."
         permission = "battleground.color"
